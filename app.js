@@ -19,7 +19,7 @@ const getRandomPhraseAsArray = arr => {
 const addPhraseToDisplay = arr => {
     for (let i = 0; i < arr.length; i++) {
         const li = document.createElement("li");
-        li.textContent = arr[i];
+        li.textContent = arr[i].toLowerCase();
         phrase.appendChild(li);
         if (arr[i].toLowerCase() != arr[i].toUpperCase()) {
             li.className = "letter";
@@ -34,9 +34,7 @@ const checkLetter = button => {
     for (let i = 0; i < letter.length; i++) {
         if (letter[i].textContent === button.textContent) {
             letter[i].classList.add("show");
-        } else {
-            return null;
-        }
+        } 
     }
 };
 
