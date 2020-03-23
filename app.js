@@ -30,24 +30,32 @@ const addPhraseToDisplay = arr => {
 };
 
 const checkLetter = button => {
-    const letter = document.querySelector(".letter");
+    const letter = document.querySelectorAll(".letter");
     for (let i = 0; i < letter.length; i++) {
-        if (letter[i] === button) {
-            const correctLetter = letter.classList.add("show");
-            return correctLetter;
+        if (letter[i].textContent === button.textContent) {
+            letter.classList.add("show");
         } else {
             return null;
         }
     }
 };
 
+addPhraseToDisplay(getRandomPhraseAsArray(phrases));
+
 start.addEventListener("click", e => {
     const overlay = document.getElementById("overlay");
     overlay.style.display = "none";
 });
 
-buttons.addEventListener("click", e => {
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].classList.add("chosen");
-    }
-});
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', e => {
+        checkLetter(buttons[i]);
+        buttons[i].classList.add('chosen');
+        if (buttons[i].className === 'chosen') {
+            buttons[i].setAttribute('disabled', true);
+
+        } else {
+            button[i].setAttribute('');
+        }
+    });
+}
