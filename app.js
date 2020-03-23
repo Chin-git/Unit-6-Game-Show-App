@@ -24,7 +24,7 @@ const addPhraseToDisplay = arr => {
         if (arr[i].toLowerCase() != arr[i].toUpperCase()) {
             li.className = "letter";
         } else {
-            li.className = "";
+            li.className = "space";
         }
     }
 };
@@ -33,7 +33,7 @@ const checkLetter = button => {
     const letter = document.querySelectorAll(".letter");
     for (let i = 0; i < letter.length; i++) {
         if (letter[i].textContent === button.textContent) {
-            letter.classList.add("show");
+            letter[i].classList.add("show");
         } else {
             return null;
         }
