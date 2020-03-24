@@ -31,14 +31,20 @@ const addPhraseToDisplay = arr => {
 
 const checkLetter = button => {
     const letter = document.querySelectorAll(".letter");
+    let guess;
     for (let i = 0; i < letter.length; i++) {
         if (letter[i].textContent === button.textContent) {
             letter[i].classList.add("show");
+            guess = letter[i].textContent;
+        } else {
+            guess = null;
         }
     }
+    return guess;
 };
+const phraseArray = getRandomPhraseAsArray(phrases);
 
-addPhraseToDisplay(getRandomPhraseAsArray(phrases));
+addPhraseToDisplay(phraseArray);
 
 start.addEventListener("click", e => {
     const overlay = document.getElementById("overlay");
@@ -47,8 +53,16 @@ start.addEventListener("click", e => {
 
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", e => {
-        let letterFound = checkLetter(buttons[i]);
         buttons[i].classList.add("chosen");
+        let letterFound = checkLetter(buttons[i]);
+        if (letterFound === null) {
+            let ol = document.getElementsByTagName('ol')[0];
+            let tries = document.querySelector(".tries:last-child");
+            missed += 1;
+            ol.removeChild(tries);
+        } else {
+            missed += 0;
+        }
         if (buttons[i].className === "chosen") {
             buttons[i].setAttribute("disabled", true);
         } else {
