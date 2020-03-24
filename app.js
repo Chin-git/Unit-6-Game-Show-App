@@ -34,7 +34,7 @@ const checkLetter = button => {
     for (let i = 0; i < letter.length; i++) {
         if (letter[i].textContent === button.textContent) {
             letter[i].classList.add("show");
-        } 
+        }
     }
 };
 
@@ -46,14 +46,13 @@ start.addEventListener("click", e => {
 });
 
 for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', e => {
-        checkLetter(buttons[i]);
-        buttons[i].classList.add('chosen');
-        if (buttons[i].className === 'chosen') {
-            buttons[i].setAttribute('disabled', true);
-
+    buttons[i].addEventListener("click", e => {
+        let letterFound = checkLetter(buttons[i]);
+        buttons[i].classList.add("chosen");
+        if (buttons[i].className === "chosen") {
+            buttons[i].setAttribute("disabled", true);
         } else {
-            button[i].setAttribute('');
+            button[i].setAttribute("");
         }
     });
 }
