@@ -68,6 +68,7 @@ const checkWin = () => {
         overlay.style.display = "block";
         start.textContent = "Restart Game";
         overlay.appendChild(start);
+        missed = 0;
         start.addEventListener('click', pageRefresh)
 
     } else if (missed >= 5) {
@@ -75,6 +76,7 @@ const checkWin = () => {
         overlay.style.display = "block";
         start.textContent = "Restart Game";
         overlay.appendChild(start);
+        missed = 0;
         start.addEventListener('click', pageRefresh)
     }
 };
