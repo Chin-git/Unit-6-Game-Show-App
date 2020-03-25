@@ -42,34 +42,45 @@ const checkLetter = button => {
         if (letter[i].textContent === button.textContent) {
             letter[i].classList.add("show");
             guess = letter[i].textContent;
-        } 
+        }
     }
     return guess;
 };
 
 const checkWin = () => {
     const letter = document.querySelectorAll(".letter");
-    const show = document.querySelectorAll('.show');
+    const show = document.querySelectorAll(".show");
     let letterCount = 0;
     let showCount = 0;
     for (let i = 0; i < letter.length; i++) {
-        if (letter[i].className === 'letter') {
+        if (letter[i].className === "letter") {
             letterCount += 1;
         }
     }
     for (let i = 0; i < show.length; i++) {
-        if (show[i].className === 'show' ) {
+        if (show[i].className === "show") {
             showCount += 1;
         }
     }
     const overlay = document.getElementById("overlay");
     if (letterCount === showCount) {
-        overlay.className = 'win';
-        overlay.style.display = 'block';
+        overlay.className = "win";
+        overlay.style.display = "block";
+        start.textContent = "Restart Game";
+        overlay.appendChild(start);
+        start.addEventListener('click', pageRefresh)
+
     } else if (missed >= 5) {
-        overlay.className = 'lose';
-        overlay.style.display = 'block';
+        overlay.className = "lose";
+        overlay.style.display = "block";
+        start.textContent = "Restart Game";
+        overlay.appendChild(start);
+        start.addEventListener('click', pageRefresh)
     }
+};
+
+const pageRefresh = () => {
+    window.location.reload();
 };
 
 const phraseArray = getRandomPhraseAsArray(phrases);
